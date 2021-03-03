@@ -66,7 +66,7 @@ const register = async (req, res) => {
         { expiresIn: process.env.TOKEN_EXPIRY }
       );
 
-      res.json({
+      res.status(200).json({
         user,
         token,
       });
