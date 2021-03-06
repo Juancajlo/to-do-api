@@ -88,7 +88,7 @@ const updateTask = async (req, res) => {
   
     const taskSaved = await taskFound.save();
 
-    res.status(204).json({
+    res.status(200).json({
         taskSaved,
     });
 };
@@ -103,7 +103,7 @@ const deleteTask = async (req, res) => {
                 msg: "Task not found",
             });
         }
-        return menu;
+        return task;
     })
     .catch((error) => {
         res.status(500).json({
@@ -116,7 +116,7 @@ const deleteTask = async (req, res) => {
 
     await task.destroy()
     .then(() => {
-        res.status(204).json({
+        res.status(200).json({
             message: `Task with id ${id} deleted successfully`,
         });
     })
