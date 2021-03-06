@@ -4,8 +4,13 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate(models) {
-      // define association here
+    static associate({ Task }) {
+      this.hasMany(Task, {
+        foreignKey: "user_id",
+        as: "tasks",
+        onDelete: "CASCADE",
+        hooks: true,
+      });
     }
   };
   User.init({
