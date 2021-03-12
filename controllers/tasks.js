@@ -22,14 +22,11 @@ const getTasks = async (req, res) => {
 };
 
 const createTask = async (req, res) => {
-    const { user_id, name, description, limitDatetime, completed } = req.body;
+    const { user_id, name } = req.body;
   
     await Task.create({
         user_id,
         name,
-        description,
-        limitDatetime,
-        completed,
     })
     .then((task) => {
         res.status(200).json({
