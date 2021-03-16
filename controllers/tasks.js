@@ -21,6 +21,29 @@ const getTasks = async (req, res) => {
     });
 };
 
+const getTasksByCompleted = async (req, res) => {
+    const id = req.params.id;
+    await Task.findAll({
+        where: { 
+            user_id: id,
+            completed: true,  
+        }
+    })
+    .then((tasks) => {
+        res.status(200).json({
+            tasks,
+        });
+    })
+    .catch((error) => {
+        res.status(500).json({
+            error: {
+                error,
+                message: "Internal server error getting completed tasks",
+            },
+        });
+    });
+};
+
 const createTask = async (req, res) => {
     const { user_id, name } = req.body;
   
