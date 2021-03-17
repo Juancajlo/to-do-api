@@ -2,7 +2,7 @@ const { Router } = require('express');
 
 const router = Router();
 
-const { getTasks, createTask, updateTask, deleteTask } = require('../controllers/tasks');
+const { getTasks, getTasksByCompleted, createTask, updateTask, deleteTask } = require('../controllers/tasks');
 
 router.get('/:id', getTasks);
 router.get('/completed/:id', getTasksByCompleted);
